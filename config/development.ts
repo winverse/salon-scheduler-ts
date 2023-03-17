@@ -6,5 +6,6 @@ export const config: Config = {
   },
   db: {
     provider: "sqlite",
+    database_url: "file:../salon.sqlite",
   },
 };

@@ -4,6 +4,7 @@ export type AppConfig = {
 
 export type DbConfig = {
   readonly provider: "sqlite";
+  readonly database_url: string;
 };
 
 export type ConfigKey = AppConfig | DbConfig;

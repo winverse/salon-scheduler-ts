@@ -4,22 +4,21 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = "file:../salon.sqlite"
+  url      = env("DATABASE_URL")
 }
 
 model Workhours {
   id             String  @id @default(cuid())
   close_interval Int
   is_day_off     Boolean
-  key            String
   open_interval  Int
   weekday        Int
 }
 
-model Event {
-  id         String   @id @default(cuid())
+model Events {
+  id         String @id @default(cuid())
   begin_at   Int
   end_at     Int
-  created_at DateTime
-  updated_at DateTime
+  created_at Int
+  updated_at Int
 }

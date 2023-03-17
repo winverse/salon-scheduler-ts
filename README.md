@@ -3,18 +3,22 @@
 # Install And Database migration
 required node version 18.15.0 (lts)
 ```
-pnpm install
+yarn
 
-pnpm prisma:push
+yarn prisma:init
 ```
 
 # database 
+All commands include in `yarn prisma:init`
 ```
 # Create sqlite file
-pnpm prisma:push
+yarn prisma:push
 
 # Generate type
-pnpm prisma:generate
+yarn prisma:generate
+
+# Create seed
+yarn prisma:seed
 ```
 
 # sqlite test

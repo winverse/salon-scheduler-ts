@@ -11,6 +11,7 @@ const validateConfig = (config: Config): void => {
     }),
     db: Joi.object().keys({
       provider: Joi.string().valid("sqlite").required(),
+      database_url: Joi.string().required(),
     }),
   });
 
