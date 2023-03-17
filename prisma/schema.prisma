@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../salon.sqlite"
+}
+
+model Workhours {
+  id             String  @id @default(cuid())
+  close_interval Int
+  is_day_off     Boolean
+  key            String
+  open_interval  Int
+  weekday        Int
+}
+
+model Event {
+  id         String   @id @default(cuid())
+  begin_at   Int
+  end_at     Int
+  created_at DateTime
+  updated_at DateTime
+}

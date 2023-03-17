@@ -1,16 +1,10 @@
-import { TypeOrmModuleOptions } from "@nestjs/typeorm";
-
 export type AppConfig = {
   readonly port: number;
 };
 
 export type DbConfig = {
-  type: string;
-  database: string;
-  entities: string[];
-  synchronize: boolean;
-  logging: boolean;
-} & TypeOrmModuleOptions;
+  readonly provider: "sqlite";
+};
 
 export type ConfigKey = AppConfig | DbConfig;
 

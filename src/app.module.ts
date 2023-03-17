@@ -1,10 +1,13 @@
 import { Module } from "@nestjs/common";
-import { ConfigModule } from "./provider/config/config.module";
-import { TypeOrmModule } from "@nestjs/typeorm";
+import { ConfigModule as NestConfigModule } from "@nestjs/config";
+import { configuration, ConfigModule } from "@provider/config";
+import { PrismaModule } from "./provider/prisma/prisma.module";
 
 @Module({
-  imports: [TypeOrmModule.forRoot({
-    
-  }), ConfigModule],
+  imports: [
+    NestConfigModule.forRoot({ load: [configuration] }),
+    ConfigModule,
+    PrismaModule,
+  ],
 })
 export class AppModule {}

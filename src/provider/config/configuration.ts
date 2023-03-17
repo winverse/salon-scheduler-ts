@@ -10,11 +10,7 @@ const validateConfig = (config: Config): void => {
       port: Joi.number().required(),
     }),
     db: Joi.object().keys({
-      type: Joi.string().valid("sqlite").required(),
-      database: Joi.string().required(),
-      entities: Joi.array().items(Joi.string().required()).required(),
-      synchronize: Joi.boolean().required(),
-      logging: Joi.boolean().required(),
+      provider: Joi.string().valid("sqlite").required(),
     }),
   });
 

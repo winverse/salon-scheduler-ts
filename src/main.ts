@@ -11,7 +11,8 @@ async function bootstrap() {
     new FastifyAdapter(),
   );
 
-  const PORT = 8080;
+  const PORT = process.env.PORT;
+
   await fastify.listen(PORT!, (error, address) => {
     if (error) {
       throw new Error(error as any);
