@@ -1,5 +1,12 @@
-import { ONE_MINUTE_IN_S } from "@common/constants/time.constants";
-import { IsBoolean, IsInt, IsOptional, IsString } from "class-validator";
+import { ONE_MINUTE_IN_S } from "@common/constants";
+import {
+  IsBoolean,
+  IsInt,
+  IsOptional,
+  IsString,
+  Max,
+  Min,
+} from "class-validator";
 
 export class GetTimeSlotBodyDto {
   @IsString()
@@ -9,21 +16,23 @@ export class GetTimeSlotBodyDto {
   readonly timezone_identifier: string;
 
   @IsInt()
-  readonly service_duration: number;
+  readonly service_duration: number; // 서비스 제공 시간, slot의 begin_at, end_at을 정한다.
 
   @IsInt()
   @IsOptional()
-  readonly days?: number = 1;
+  @Min(1)
+  @Max(365)
+  readonly days: number = 1;
 
   @IsInt()
   @IsOptional()
-  readonly timeslot_interval?: number = ONE_MINUTE_IN_S * 30; // 30분
+  readonly timeslot_interval: number = ONE_MINUTE_IN_S * 30; // 30분, slot간의 begin_at 시간을 정한다
 
   @IsBoolean()
   @IsOptional()
-  readonly is_ignore_schedule?: boolean = false;
+  readonly is_ignore_schedule: boolean = false;
 
   @IsBoolean()
   @IsOptional()
-  readonly is_ignore_workhour?: boolean = false;
+  readonly is_ignore_workhour: boolean = false;
 }

@@ -8,16 +8,15 @@ datasource db {
 }
 
 model Workhours {
-  id             String  @id @default(cuid())
+  key            String  @unique
+  open_interval  Int
   close_interval Int
   is_day_off     Boolean
-  open_interval  Int
   weekday        Int
 }
 
 model Events {
-  id         String @id @default(cuid())
-  begin_at   Int
+  begin_at   Int @unique
   end_at     Int
   created_at Int
   updated_at Int

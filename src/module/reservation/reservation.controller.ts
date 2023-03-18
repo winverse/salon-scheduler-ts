@@ -14,7 +14,7 @@ export class ReservationController {
     @Body() body: GetTimeSlotBodyDto,
     @Res() reply: FastifyReply,
   ) {
-    await this.reservationService.getTimeSlot(body);
-    reply.status(200).send("Ok");
+    const result = await this.reservationService.getTimeTable(body);
+    reply.status(200).send(result);
   }
 }

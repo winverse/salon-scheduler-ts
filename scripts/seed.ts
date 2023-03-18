@@ -12,7 +12,7 @@ async function main() {
     const { default: data } = await import(filepath);
 
     const tablename = path.basename(filepath, ".json");
-    data.forEach(async (row) => {
+    data.forEach(async (row: unknown) => {
       const client: any = prisma[tablename];
       await client.create({
         data: row,
