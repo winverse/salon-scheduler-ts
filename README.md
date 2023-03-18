@@ -9,7 +9,7 @@ yarn prisma:init
 ```
 
 # database 
-All commands include in `yarn prisma:init`
+All commands were included in `yarn prisma:init`
 ```
 # Create sqlite file
 yarn prisma:push
