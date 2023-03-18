@@ -4,6 +4,7 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from "@nestjs/platform-fastify";
+import { VersioningType } from "@nestjs/common";
 
 async function bootstrap() {
   const fastify = await NestFactory.create<NestFastifyApplication>(
@@ -11,8 +12,12 @@ async function bootstrap() {
     new FastifyAdapter(),
   );
 
-  const PORT = process.env.PORT;
+  fastify.setGlobalPrefix("/api");
+  fastify.enableVersioning({
+    type: VersioningType.URI,
+  });
 
+  const PORT = process.env.PORT;
   await fastify.listen(PORT!, (error, address) => {
     if (error) {
       throw new Error(error as any);
