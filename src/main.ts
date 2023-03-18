@@ -4,7 +4,7 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from "@nestjs/platform-fastify";
-import { VersioningType } from "@nestjs/common";
+import { ValidationPipe, VersioningType } from "@nestjs/common";
 
 async function bootstrap() {
   const fastify = await NestFactory.create<NestFastifyApplication>(
@@ -16,6 +16,18 @@ async function bootstrap() {
   fastify.enableVersioning({
     type: VersioningType.URI,
   });
+
+  fastify.useGlobalPipes(
+    new ValidationPipe({
+      forbidUnknownValues: true,
+      stopAtFirstError: true,
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
+      transformOptions: { enableImplicitConversion: true },
+      disableErrorMessages: false,
+    }),
+  );
 
   const PORT = process.env.PORT;
   await fastify.listen(PORT!, (error, address) => {
