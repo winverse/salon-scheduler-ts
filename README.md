@@ -28,5 +28,7 @@ sqlite3 salon.sqlite
 # show tables;
 .tables
 
->> Event      Workhours
+# See the database with prisma
+yarn prisma:studio
 ```
+
