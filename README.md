@@ -1,4 +1,4 @@
-# Salon-time-slot
+# Salon Scheduler
 A hair salon reservation application allows users to conveniently select their desired date and time slot from a list of available options. This application simplifies the reservation process for both the salon and its customers by providing an easy-to-use interface for managing appointments. With this application, customers can effortlessly book their appointments at their preferred time and date, while salons can efficiently manage their schedules.
 
 # Run
