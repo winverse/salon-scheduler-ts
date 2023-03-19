@@ -32,3 +32,9 @@ sqlite3 salon.sqlite
 yarn prisma:studio
 ```
 
+
+# Test
+```
+# 10 test case exists
+yarn test
+```
