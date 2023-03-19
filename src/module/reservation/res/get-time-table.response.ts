@@ -9,8 +9,8 @@ class TimeSlot {
 }
 
 export class GetTimeTableResponse {
-  @ApiProperty({ example: "1620054000" })
-  start_of_day: string;
+  @ApiProperty({ example: 1620054000 })
+  start_of_day: number;
 
   @ApiProperty({ example: 1 })
   day_modifier: number;
