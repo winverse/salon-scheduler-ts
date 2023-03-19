@@ -1,17 +1,21 @@
-# salon-time-slot
+# Salon-time-slot
+A hair salon reservation application allows users to conveniently select their desired date and time slot from a list of available options. This application simplifies the reservation process for both the salon and its customers by providing an easy-to-use interface for managing appointments. With this application, customers can effortlessly book their appointments at their preferred time and date, while salons can efficiently manage their schedules.
 
-# Install And Database migration
+# Run
 required node version 18.15.0 (lts)
 ```
-yarn
+# Install
+yarn 
 
+# Set up prisma
 yarn prisma:init
 
+# Start application
 yarn start:dev
 
 # In terminal
-> Server is Running, address: {{your host}}
-> Swagger: {{your host}}/api/documentation
+> Server is Running, address: {{host}} // See in config/development.ts
+> Swagger: {{host}}/api/documentation
 ```
 
 # Database 
@@ -27,7 +31,7 @@ yarn prisma:generate
 yarn prisma:seed
 ```
 
-# sqlite test
+# Show tables
 ```
 sqlite3 salon.sqlite
 
@@ -47,7 +51,7 @@ yarn test
 # Documentation
 ```
 # Swagger
-{{your host}}/api/documentation
+{{host}}/api/documentation
 
 # Postman
 https://documenter.getpostman.com/view/4627621/2s93JzM1LQ
