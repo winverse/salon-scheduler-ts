@@ -14,7 +14,6 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const reply = ctx.getResponse<FastifyReply>();
 
     if (process.env.NODE_ENV !== "test") {
-      console.log("hio");
       console.error(exception);
     }
 
