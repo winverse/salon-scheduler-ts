@@ -5,6 +5,7 @@ import { UtilsModule } from "@provider/utils/utils.module";
 import { formatInTimeZone } from "date-fns-tz";
 import { Timeslot } from "@common/interface";
 import { GetTimeSlotBodyDto } from "@module/reservation/dto";
+import { ONE_SECOND_IN_MS } from "@common/constants";
 
 type SlotTimeIntervals = {
   slotInterval: number;
@@ -22,7 +23,11 @@ async function timeTableTestModule(
   const { start_of_day, timeslots, is_day_off } = timeTable[0];
 
   expect(
-    formatInTimeZone(start_of_day * 1000, timezone_identifier, "yyyy-MM-dd"),
+    formatInTimeZone(
+      start_of_day * ONE_SECOND_IN_MS,
+      timezone_identifier,
+      "yyyy-MM-dd",
+    ),
   ).toBe(expectedStartDate);
 
   if (is_day_off) return;
@@ -79,8 +84,8 @@ describe("ReservationService", () => {
         const body = {
           start_day_identifier: "20230319", // 시작 날짜
           days: 1,
-          timeslot_interval: 600, //
-          service_duration: 1800,
+          timeslot_interval: 600, // 10분
+          service_duration: 1800, // 30분
           is_ignore_schedule: false,
           is_ignore_workhour: false,
           timezone_identifier: "America/New_York",

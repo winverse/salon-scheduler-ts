@@ -1,4 +1,4 @@
-import { NOT_FOUND_WORKHOUR } from "@common/constants";
+import { NOT_FOUND_WORKHOUR, ONE_SECOND_IN_MS } from "@common/constants";
 import { DayTimetable, Timeslot } from "@common/interface";
 import { GetTimeSlotBodyDto } from "@module/reservation/dto";
 import { Injectable, NotFoundException } from "@nestjs/common";
@@ -73,19 +73,19 @@ export class ReservationService {
     const { open_interval: open_unixstamp, close_interval: close_unixstamp } =
       workhour;
 
-    const openTime = startOfDayTime + open_unixstamp * 1000;
-    const closeTime = startOfDayTime + close_unixstamp * 1000;
+    const openTime = startOfDayTime + open_unixstamp * ONE_SECOND_IN_MS;
+    const closeTime = startOfDayTime + close_unixstamp * ONE_SECOND_IN_MS;
 
     const storeOperatingTime = closeTime - openTime;
     const timeslotLength = Math.floor(
-      storeOperatingTime / (timeslot_interval * 1000),
+      storeOperatingTime / (timeslot_interval * ONE_SECOND_IN_MS),
     );
 
     const events = await this.prisma.events.findMany({
       where: {
         begin_at: {
-          gte: openTime / 1000,
-          lte: closeTime / 1000,
+          gte: openTime / ONE_SECOND_IN_MS,
+          lte: closeTime / ONE_SECOND_IN_MS,
         },
       },
     });
@@ -111,13 +111,13 @@ export class ReservationService {
         if (!is_ignore_schedule && existsEvent) return acc;
 
         return acc.concat({
-          begin_at: beginAtTime / 1000,
-          end_at: endAtTime / 1000,
+          begin_at: beginAtTime / ONE_SECOND_IN_MS,
+          end_at: endAtTime / ONE_SECOND_IN_MS,
         });
       }, []);
 
     return {
-      start_of_day: startOfDayTime / 1000, // 정시 기준
+      start_of_day: startOfDayTime / ONE_SECOND_IN_MS, // 정시 기준
       day_modifier: dayModifier,
       is_day_off: open_unixstamp === close_unixstamp,
       timeslots,
