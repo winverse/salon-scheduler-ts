@@ -22,10 +22,12 @@
     "test:cov": "jest --coverage"
   },
   "dependencies": {
+    "@fastify/static": "^6.9.0",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.3.1",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-fastify": "^9.3.10",
+    "@nestjs/swagger": "^6.2.1",
     "@prisma/client": "^4.5.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",

@@ -1,4 +1,4 @@
-# DayTimeTable
+# salon-time-slot
 
 # Install And Database migration
 required node version 18.15.0 (lts)
@@ -6,9 +6,15 @@ required node version 18.15.0 (lts)
 yarn
 
 yarn prisma:init
+
+yarn start:dev
+
+# In terminal
+> Server is Running, address: {{your host}}
+> Swagger: {{your host}}/api/documentation
 ```
 
-# database 
+# Database 
 All commands were included in `yarn prisma:init`
 ```
 # Create sqlite file
@@ -32,9 +38,17 @@ sqlite3 salon.sqlite
 yarn prisma:studio
 ```
 
-
 # Test
 ```
 # 10 test case exists
 yarn test
+```
+
+# Documentation
+```
+# Swagger
+{{your host}}/api/documentation
+
+# Postman
+https://documenter.getpostman.com/view/4627621/2s93JzM1LQ
 ```
