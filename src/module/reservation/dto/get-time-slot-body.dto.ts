@@ -4,6 +4,7 @@ import {
   IsInt,
   IsOptional,
   IsString,
+  IsTimeZone,
   Max,
   Min,
 } from "class-validator";
@@ -12,7 +13,7 @@ export class GetTimeSlotBodyDto {
   @IsString()
   readonly start_day_identifier: string;
 
-  @IsString()
+  @IsTimeZone()
   readonly timezone_identifier: string;
 
   @IsInt()

@@ -32,7 +32,6 @@ export class ReservationService {
       .map((date, index) => this.getTimeSlot(date, body, index + 1));
 
     const result = await Promise.all(promises);
-
     return result;
   }
   private async getTimeSlot(
